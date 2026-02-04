@@ -68,4 +68,4 @@ def subir_faq_v4(nome_arquivo):
         client.close()
 
 # Lembre-se de conferir se o nome do arquivo abaixo está igual ao seu no computador
-subir_faq_v4("Medicamento2.docx")
+subir_faq_v4("Medicamento2.docx") 
