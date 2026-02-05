@@ -1,21 +1,23 @@
-from pymongo import MongoClient
-from docx import Document
-from datetime import datetime, timezone
+import os
 import re
 import json
+from datetime import datetime, timezone
+from dotenv import load_dotenv
+from pymongo import MongoClient
+from docx import Document
+
+# 1. Carrega as variáveis de ambiente
+load_dotenv()
+uri = os.getenv("MONGODB_URI")
 
 # ============================================================================
 # CONFIGURAÇÃO DOS ARQUIVOS
-# Para adicionar um novo arquivo: adicione uma tupla (caminho, categoria)
-# Para remover: comente ou delete a linha
 # ============================================================================
 ARQUIVOS_PROCESSAR = [
     ("./faqs/medicamento.docx", "Medicamentos"),
     ("./faqs/local.docx", "Local"),
     ("./faqs/vacinas.docx", "Vacina"),
 ]
-
-uri = "mongodb+srv://marina:Ju050100@marinanevesa.rcgenti.mongodb.net/?appName=marinanevesa"
 
 def subir_faq(nome_arquivo, categoria, collection):
     """
